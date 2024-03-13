@@ -33,7 +33,12 @@ class Article(models.Model):
     updater = models.ForeignKey(to=User, verbose_name='Обновил', on_delete=models.SET_NULL, null=True, related_name='updater_posts', blank=True)
     fixed = models.BooleanField(verbose_name='Зафиксировано', default=False)
     category = TreeForeignKey('Category', on_delete=models.PROTECT, related_name='articles', verbose_name='Категория')
-
+    thumbnail = models.ImageField(
+        verbose_name='Превью поста',
+        blank=True,
+        upload_to='images/thumbnails/%Y/%m/%d/',
+        validators=[FileExtensionValidator(allowed_extensions=('png', 'jpg', 'webp', 'jpeg', 'gif'))]
+    )
 
     class Meta:
         db_table = 'app_articles'
