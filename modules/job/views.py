@@ -13,6 +13,7 @@ class ArticleListView(ListView):
         context['title'] = 'Главная страница'
         return context
 
+
 class ArticleDetailView(DetailView):
     model = Article
     template_name = 'blog/articles_detail.html'
