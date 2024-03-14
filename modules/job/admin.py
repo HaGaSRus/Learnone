@@ -3,7 +3,6 @@ from django.contrib import admin
 from mptt.admin import DraggableMPTTAdmin
 from .models import Category, Article
 
-
 @admin.register(Category)
 class CategoryAdmin(DraggableMPTTAdmin):
     """

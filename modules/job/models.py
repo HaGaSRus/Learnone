@@ -21,7 +21,7 @@ class Article(models.Model):
     )
 
     title = models.CharField(verbose_name='Заголовок', max_length=255)
-    slug = models.SlugField(verbose_name='URL', max_length=255, blank=True, unique=True)
+    slug = models.CharField(verbose_name='URL', max_length=255, blank=True, unique=True)
     short_description = models.TextField(verbose_name='Краткое описание', max_length=500)
     full_description = models.TextField(verbose_name='Полное описание')
     thumbnail = models.ImageField(
@@ -56,6 +56,14 @@ class Article(models.Model):
 
     def get_absolute_url(self):
         return reverse('articles_detail', kwargs={'slug': self.slug})
+
+    def save(self, *args, **kwargs):
+        """
+        Сохранение полей модели при их отсутствии заполнения
+        """
+        if not self.slug:
+            self.slug = unique_slugify(self, self.title)
+        super().save(*args, **kwargs)
 
 
 class Category(MPTTModel):
