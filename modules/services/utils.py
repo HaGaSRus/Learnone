@@ -1,7 +1,8 @@
 from uuid import uuid4
 from pytils.translit import slugify
 
-def unique_slugfy(instance, slug):
+
+def unique_slugify(instance, slug):
     """
     Генератор уникальных SLUG для моделей, в случае существования такого SLUG.
     """

@@ -5,6 +5,8 @@ from django.urls import reverse
 
 from mptt.models import MPTTModel, TreeForeignKey
 
+from modules.services.utils import unique_slugify
+
 User = get_user_model()
 
 
