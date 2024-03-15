@@ -42,9 +42,11 @@ class ArticleByCategoryListView(ListView):
         context['title'] =f'Статьи из категории: {self.category.title}'
         return context
 
-def articles_list(request, page):
+
+def articles_list(request):
     articles = Article.objects.all()
     paginator = Paginator(articles, per_page=2)
-    page_object = paginator.get_page(page)
+    page_number = request.GET.get('page')
+    page_object = paginator.get_page(page_number)
     context = {'page_obj': page_object}
     return render(request, 'blog/articles_func_list.html', context)
