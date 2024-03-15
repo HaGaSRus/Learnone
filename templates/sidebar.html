@@ -3,7 +3,7 @@
 <div class="card">
     <div class="card-body">
       <h5 class="card-title">Категории</h5>
-      {% full_tree_for_model blog.Category as categories %}
+      {% full_tree_for_model job.Category as categories %}
       <p class="card-text">
         <ul>
             {% recursetree categories %}
