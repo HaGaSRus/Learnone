@@ -15,6 +15,17 @@ class Article(models.Model):
     Модель постов для сайта
     """
 
+    class ArticleManager(models.Manager):
+        """
+        Кастомный менеджер для модели статей
+        """
+
+        def all(self):
+            """
+            Список статей (SQL запрос с фильтрацией для страницы списка статей)
+            """
+            return self.get_queryset().filter(status='published')
+
     STATUS_OPTIONS = (
         ('published', 'Опубликовано'),
         ('draft', 'Черновик')
@@ -50,6 +61,8 @@ class Article(models.Model):
         indexes = [models.Index(fields=['-fixed', '-time_create', 'status'])]
         verbose_name = 'Статья'
         verbose_name_plural = 'Статьи'
+
+    objects = ArticleManager()
 
     def __str__(self):
         return self.title
