@@ -62,7 +62,7 @@ class Article(models.Model):
         verbose_name = 'Статья'
         verbose_name_plural = 'Статьи'
 
-    objects = ArticleManager()
+    custom = ArticleManager()
 
     def __str__(self):
         return self.title

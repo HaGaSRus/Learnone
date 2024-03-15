@@ -10,6 +10,7 @@ class ArticleListView(ListView):
     template_name = 'blog/articles_list.html'
     context_object_name = 'articles'
     paginate_by = 2
+    queryset = Article.custom.all()
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -21,6 +22,7 @@ class ArticleDetailView(DetailView):
     model = Article
     template_name = 'blog/articles_detail.html'
     context_object_name = 'article'
+    queryset = Article.custom.all()
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
