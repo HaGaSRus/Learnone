@@ -3,6 +3,7 @@ from django.urls import reverse_lazy
 from .models import Article, Category
 from .forms import ArticleCreateForm
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.messages.views import SuccessMessageMixin
 
 from django.shortcuts import render
 from django.core.paginator import Paginator
@@ -80,7 +81,7 @@ class ArticleCreateView(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
-class ArticleUpdateView(UpdateView):
+class ArticleUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     """
     Представление: обновления материала на сайте
     """
@@ -88,6 +89,8 @@ class ArticleUpdateView(UpdateView):
     template_name = 'blog/articles_update.html'
     context_object_name = 'article'
     form_class = ArticleUpdateForm
+    login_url = 'home'
+    success_message = 'Материал был успешно обновлен'
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
