@@ -76,7 +76,7 @@ class Article(models.Model):
         Сохранение полей модели при их отсутствии заполнения
         """
         if not self.slug:
-            self.slug = slugify(self, self.title)
+            self.slug = slugify(self)
         return super().save(*args, **kwargs)
 
 

@@ -1,4 +1,5 @@
-from django.views.generic import ListView, DetailView, CreateView, UpdateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
 from .models import Article
 from .forms import ArticleCreateForm
 
@@ -93,3 +94,19 @@ class ArticleUpdateView(UpdateView):
         form.instance.updater = self.request.user
         form.save()
         return super().form_valid(form)
+
+
+class ArticleDeleteView(DeleteView):
+    """
+    Представление удаления материала
+    """
+    model = Article
+    success_url = reverse_lazy('home')
+    context_object_name = 'article'
+    template_name = 'blog/articles_delete.html'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = f'Удаление статьи: {self.object.title}'
+        return context
+
