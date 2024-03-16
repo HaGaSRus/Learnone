@@ -18,6 +18,7 @@ class ProfileDetailView(DetailView):
         context['title'] = f'Страница пользователя: {self.object.user.username}'
         return context
 
+
 class ProfileUpdateView(UpdateView):
     """
     Представление для редактирования профиля
@@ -31,7 +32,7 @@ class ProfileUpdateView(UpdateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = f'Редактирование профиля пользователя: {self.request.username}'
+        context['title'] = f'Редактирование профиля пользователя: {self.request.user.username}'
         if self.request.POST:
             context['user_form'] = UserUpdateForm(self.request.POST, instance=self.request.user)
         else:
