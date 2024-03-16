@@ -1,10 +1,10 @@
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from .models import Article
 from .forms import ArticleCreateForm
 
 from django.shortcuts import render
 from django.core.paginator import Paginator
-
+from .forms import ArticleUpdateForm
 
 class ArticleListView(ListView):
     model = Article
@@ -56,6 +56,7 @@ def articles_list(request):
     context = {'page_obj': page_object}
     return render(request, 'blog/articles_func_list.html', context)
 
+
 class ArticleCreateView(CreateView):
     """
     Представление: создание материалов на сайте
@@ -71,5 +72,24 @@ class ArticleCreateView(CreateView):
 
     def form_valid(self, form):
         form.instance.author = self.request.user
+        form.save()
+        return super().form_valid(form)
+
+class ArticleUpdateView(UpdateView):
+    """
+    Представление: обновления материала на сайте
+    """
+    model = Article
+    template_name = 'blog/articles_update.html'
+    context_object_name = 'article'
+    form_class = ArticleUpdateForm
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = f'Обновление статьи: {self.object.title}'
+        return context
+
+    def form_valid(self, form):
+        form.instance.updater = self.request.user
         form.save()
         return super().form_valid(form)
