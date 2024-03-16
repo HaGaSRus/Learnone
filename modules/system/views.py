@@ -26,6 +26,7 @@ class ProfileUpdateView(UpdateView):
     model = Profile
     form_class = ProfileUpdateForm
     template_name = 'system/profile_edit.html'
+    queryset = model.objects.all().select_related('user')
 
     def get_object(self, queryset=None):
         return self.request.user.profile
