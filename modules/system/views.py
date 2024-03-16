@@ -2,9 +2,10 @@ from django.views.generic import DetailView, UpdateView, CreateView
 from django.db import transaction
 from django.urls import reverse_lazy
 from django.contrib.messages.views import SuccessMessageMixin
+from django.contrib.auth.views import LoginView, LogoutView
 
 from .models import Profile
-from .forms import UserUpdateForm, ProfileUpdateForm, UserRegisterForm
+from .forms import UserUpdateForm, ProfileUpdateForm, UserRegisterForm, UserLoginForm
 
 
 class ProfileDetailView(DetailView):
@@ -34,6 +35,28 @@ class UserRegisterView(SuccessMessageMixin, CreateView):
         context = super().get_context_data(**kwargs)
         context['title'] = 'Регистрация на сайте'
         return context
+
+
+class UserLoginView(SuccessMessageMixin, LoginView):
+    """
+    Авторизация на сайте
+    """
+    form_class = UserLoginForm
+    template_name = 'system/user_login.html'
+    next_page = 'home'
+    success_message = 'Добро пожаловать на сайт!'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Авторизация на сайте'
+        return context
+
+
+class UserLogoutView(LogoutView):
+    """
+    Выход с сайта
+    """
+    next_page = 'home'
 
 
 class ProfileUpdateView(UpdateView):
