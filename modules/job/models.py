@@ -5,7 +5,8 @@ from django.urls import reverse
 
 from mptt.models import MPTTModel, TreeForeignKey
 
-from modules.services.utils import unique_slugify
+from pytils.translit import slugify
+
 
 User = get_user_model()
 
@@ -75,8 +76,8 @@ class Article(models.Model):
         Сохранение полей модели при их отсутствии заполнения
         """
         if not self.slug:
-            self.slug = unique_slugify(self, self.title)
-        super().save(*args, **kwargs)
+            self.slug = slugify(self, self.title)
+        return super().save(*args, **kwargs)
 
 
 class Category(MPTTModel):
