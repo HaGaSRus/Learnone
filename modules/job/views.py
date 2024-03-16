@@ -8,6 +8,7 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import render
 from django.core.paginator import Paginator
 from .forms import ArticleUpdateForm
+from ..services.mixins import AuthorRequiredMixin
 
 
 class ArticleListView(ListView):
@@ -81,7 +82,7 @@ class ArticleCreateView(LoginRequiredMixin, CreateView):
         return super().form_valid(form)
 
 
-class ArticleUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
+class ArticleUpdateView(AuthorRequiredMixin, SuccessMessageMixin, UpdateView):
     """
     Представление: обновления материала на сайте
     """
@@ -103,7 +104,7 @@ class ArticleUpdateView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
         return super().form_valid(form)
 
 
-class ArticleDeleteView(DeleteView):
+class ArticleDeleteView(AuthorRequiredMixin, DeleteView):
     """
     Представление удаления материала
     """
