@@ -142,6 +142,7 @@ class UserForgotPasswordForm(PasswordResetForm):
                 'autocomplete': 'off'
             })
 
+
 class UserSetNewPasswordForm(SetPasswordForm):
     """
     Изменение пароля пользователя после подтверждения
@@ -150,6 +151,7 @@ class UserSetNewPasswordForm(SetPasswordForm):
         """
         Обновление стилей формы
         """
+        super().__init__(*args, **kwargs)
         for field in self.fields:
             self.fields[field].widget.attrs.update({
                 'class': 'form-control',
