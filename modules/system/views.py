@@ -203,9 +203,8 @@ class EmailConfirmedView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = 'Вас электронный адрес активирован'
+        context['title'] = 'Ваш электронный адрес активирован'
         return context
-
 
 class EmailConfirmationFailedView(TemplateView):
     template_name = 'system/registration/email_confirmation_failed.html'
