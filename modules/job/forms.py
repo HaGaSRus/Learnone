@@ -53,3 +53,20 @@ class CommentCreateForm(forms.ModelForm):
         model = Comment
         fields = ('content',)
 
+
+class FeedBackCreateForm(forms.ModelForm):
+    """
+    Форма отправки обратной связи
+    """
+
+    class Meta:
+        model = Feedback
+        fields = ('subject', 'email', 'content')
+
+    def __init__(self, *args, **kwargs):
+        """
+        Обновление стилей формы
+        """
+        super().__init__(*args, **kwargs)
+        for field in self.fields:
+            self.fields[field].widget.attrs.update({'class': 'form-control', 'autocomplete': 'off'})

@@ -9,6 +9,7 @@ from datetime import date, timedelta
 
 User = get_user_model()
 
+
 class Feedback(models.Model):
     """
     Модель обратной связи
