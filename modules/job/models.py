@@ -27,6 +27,15 @@ class Article(models.Model):
             """
             return self.get_queryset().select_related('author', 'category').filter(status='published')
 
+        def detail(self):
+            """
+            Детальная статья (SQL запрос с фильтрацией для страницы со статьей
+            """
+            return self.get_queryset()\
+                .select_related('author', 'category')\
+                .prefetch_related('comments', 'comments_author', 'comments_author_profile')\
+                .filter(status='published')
+
     STATUS_OPTIONS = (
         ('published', 'Опубликовано'),
         ('draft', 'Черновик')
