@@ -5,6 +5,7 @@ from .models import Article, Category, Comment
 from .forms import ArticleCreateForm, ArticleUpdateForm, CommentCreateForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
+from taggit.models import Tag
 
 
 from django.shortcuts import render, redirect
@@ -156,3 +157,21 @@ class CommentCreateView(LoginRequiredMixin, CreateView):
 
     def handle_no_permission(self):
         return JsonResponse({'error': 'Необходимо авторизоваться для добавления комментариев'}, status=400)
+
+
+class ArticleByTagListView(ListView):
+    model = Article
+    template_name = 'modules/blog/articles/article-list.html'
+    context_object_name = 'articles'
+    paginate_by = 10
+    tag = None
+
+    def get_queryset(self):
+        self.tag = Tag.objects.get(slug=self.kwargs['tag'])
+        queryset = Article.objects.all().filter(tags_slug=self.tag.slug)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = f'Статьи по тегу: {self.tag.name}'
+        return context
+
