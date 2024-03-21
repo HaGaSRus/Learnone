@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'modules.services',
     'mptt',
     'debug_toolbar',
+    'taggit',
 ]
 
 SITE_ID = 1

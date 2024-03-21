@@ -13,11 +13,10 @@ class ProfileAdmin(admin.ModelAdmin):
 
 
 @admin.register(Feedback)
-class FeedBackAdmin(admin.ModelAdmin):
+class FeedbackAdmin(admin.ModelAdmin):
     """
     Админ-панель модели профиля
     """
-    list_display = ('email', 'id_address', 'user')
+    list_display = ('email', 'ip_address', 'user')
     list_display_links = ('email', 'ip_address')
-
 
