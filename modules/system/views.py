@@ -236,3 +236,4 @@ class FeedbackCreateView(SuccessMessageMixin, CreateView):
                 feedback.user = self.request.user
             send_contact_email_message(feedback.subject, feedback.email, feedback.content, feedback.ip_address, feedback.user_id)
         return super().form_valid(form)
+
