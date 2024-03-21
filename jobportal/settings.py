@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'mptt',
     'debug_toolbar',
     'taggit',
+    'captcha',
 ]
 
 SITE_ID = 1
@@ -156,3 +157,7 @@ EMAIL_HOST_PASSWORD = 'jzexapnnpbaqsjrp'
 EMAIL_SERVER = EMAIL_HOST_USER
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 EMAIL_ADMIN = ['tro37295@gmail.com']
+
+RECAPTCHA_PUBLIC_KEY = '6LfWNKApAAAAAKJbQhQddx7EugRmMl6Qs1SG8efr'
+RECAPTCHA_PRIVATE_KEY = '6LfWNKApAAAAALSMfIxw30N1zb_Gppmdc50ogVu0'
+
