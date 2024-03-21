@@ -2,6 +2,7 @@ from django.db import models
 from django.core.validators import FileExtensionValidator
 from django.contrib.auth import get_user_model
 from django.urls import reverse
+from taggit.managers import TaggableManager
 
 from mptt.models import MPTTModel, TreeForeignKey
 
@@ -87,6 +88,8 @@ class Article(models.Model):
         if not self.slug:
             self.slug = slugify(self)
         return super().save(*args, **kwargs)
+
+    tags = TaggableManager()
 
 
 class Category(MPTTModel):
