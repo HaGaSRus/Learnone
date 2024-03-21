@@ -30,12 +30,13 @@ class Article(models.Model):
 
         def detail(self):
             """
-            Детальная статья (SQL запрос с фильтрацией для страницы со статьей
+            Детальная статья (SQL запрос с фильтрацией для страницы со статьёй)
             """
             return self.get_queryset()\
                 .select_related('author', 'category')\
-                .prefetch_related('comments', 'comments_author', 'comments_author_profile')\
+                .prefetch_related('comments', 'comments__author', 'comments__author__profile')\
                 .filter(status='published')
+
 
     STATUS_OPTIONS = (
         ('published', 'Опубликовано'),
