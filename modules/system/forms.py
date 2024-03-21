@@ -1,6 +1,9 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, SetPasswordForm, PasswordResetForm
 from django.contrib.auth.models import User
+from django.conf import settings
+from captcha.fields import ReCaptchaField
+from captcha.widgets import ReCaptchaV2Checkbox
 
 from .models import Profile, Feedback
 
@@ -12,6 +15,9 @@ class UserRegisterForm(UserCreationForm):
 
     class Meta(UserCreationForm.Meta):
         fields = UserCreationForm.Meta.fields + ('email', 'first_name', 'last_name')
+
+    recaptcha = ReCaptchaField(widget=ReCaptchaV2Checkbox, public_key=settings.RECAPTCHA_PUBLIC_KEY,
+                               private_key=settings.RECAPTCHA_PRIVATE_KEY, label='ReCAPTCHA')
 
     def clean_email(self):
         """
@@ -37,10 +43,14 @@ class UserRegisterForm(UserCreationForm):
             self.fields['password2'].widget.attrs.update({"placeholder": 'Повторите свой пароль'})
             self.fields[field].widget.attrs.update({"class": "form-control", "autocomplete": "off"})
 
+
 class UserLoginForm(AuthenticationForm):
     """
     Форма авторизации на сайте
     """
+
+    recaptcha = ReCaptchaField(widget=ReCaptchaV2Checkbox, public_key=settings.RECAPTCHA_PUBLIC_KEY,
+                               private_key=settings.RECAPTCHA_PRIVATE_KEY, label='ReCAPTCHA')
 
     def __init__(self, *args, **kwargs):
         """
@@ -128,6 +138,9 @@ class UserForgotPasswordForm(PasswordResetForm):
     """
     Запрос на восстановление пароля
     """
+
+    recaptcha = ReCaptchaField(widget=ReCaptchaV2Checkbox, public_key=settings.RECAPTCHA_PUBLIC_KEY,
+                               private_key=settings.RECAPTCHA_PRIVATE_KEY, label='ReCAPTCHA')
 
     def __init__(self, *args, **kwargs):
         """
