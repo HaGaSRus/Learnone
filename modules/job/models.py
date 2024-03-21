@@ -34,9 +34,8 @@ class Article(models.Model):
             """
             return self.get_queryset()\
                 .select_related('author', 'category')\
-                .prefetch_related('comments', 'comments__author', 'comments__author__profile')\
+                .prefetch_related('comments', 'comments__author', 'comments__author__profile', 'tags')\
                 .filter(status='published')
-
 
     STATUS_OPTIONS = (
         ('published', 'Опубликовано'),
