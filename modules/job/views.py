@@ -6,7 +6,8 @@ from .forms import ArticleCreateForm, ArticleUpdateForm, CommentCreateForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from taggit.models import Tag
-
+import random
+from django.db.models import Count
 
 from django.shortcuts import render, redirect
 from django.core.paginator import Paginator
@@ -32,10 +33,19 @@ class ArticleDetailView(DetailView):
     context_object_name = 'article'
     queryset = model.custom.detail()
 
+    def get_similar_articles(self, obj):
+        article_tags_ids = obj.tags.values_list('id', flat=True)
+        similar_articles = Article.custom.filter(tags__in=article_tags_ids).exclude(id=obj.id)
+        similar_articles = similar_articles.annotate(related_tags=Count('tags')).order_by('-related_tags')
+        similar_articles_list = list(similar_articles.all())
+        random.shuffle(similar_articles_list)
+        return similar_articles_list[:6]
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title'] = self.object.title
         context['form'] = CommentCreateForm
+        context['similar_articles'] = self.get_similar_articles(self.object)
         return context
 
 
