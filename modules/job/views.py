@@ -202,7 +202,7 @@ class ArticleSearchResultView(ListView):
         query = self.request.GET.get('do')
         search_vector = SearchVector('full_description', weight='B') + SearchVector('title', weight='A')
         search_query = SearchQuery(query)
-        return (self.model.objects.annotate(rank=SearchRank(search_vector, search_query)).filter(rank__gte=0.3).order_by('-rank'))
+        return (self.model.custom.annotate(rank=SearchRank(search_vector, search_query)).filter(rank__gte=0.3).order_by('-rank'))
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
