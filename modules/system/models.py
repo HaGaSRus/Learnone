@@ -6,6 +6,7 @@ from django.dispatch import receiver
 from django.urls import reverse
 from datetime import date, timedelta
 
+from pytils.translit import slugify
 
 User = get_user_model()
 
@@ -36,7 +37,7 @@ class Profile(models.Model):
         Сохранение полей модели при их отсутствии заполнения
         """
         if not self.slug:
-            self.slug = unique_slugify(self, self.user.username)
+            self.slug = slugify(self)
         super().save(*args, **kwargs)
 
     def __str__(self):
