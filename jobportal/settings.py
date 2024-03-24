@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'taggit',
     'captcha',
     'django_ckeditor_5',
+    'django_cleanup',
 ]
 
 SITE_ID = 1
