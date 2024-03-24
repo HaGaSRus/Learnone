@@ -17,6 +17,7 @@ User = get_user_model()
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     slug = models.SlugField(verbose_name='URL', max_length=255, blank=True, unique=True)
+    following = models.ManyToManyField('self', verbose_name='Подписки', related_name='followers', symmetrical=False, blank=True)
     avatar = models.ImageField(
         verbose_name='Аватар',
         upload_to='images/avatars/%Y/%m/%d/',
