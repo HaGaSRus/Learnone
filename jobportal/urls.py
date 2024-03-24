@@ -12,6 +12,10 @@ sitemaps = {
     'articles': ArticleSitemap
 }
 
+handler403 = 'modules.system.views.tr_handler403'
+handler404 = 'modules.system.views.tr_handler404'
+handler500 = 'modules.system.views.tr_handler500'
+
 urlpatterns = [
     path('ckeditor5/', include('django_ckeditor_5.urls')),
     path('admin/', admin.site.urls),
