@@ -210,6 +210,7 @@ class ArticleSearchResultView(ListView):
         context['title'] = f'Результаты поиска: {self.request.GET.get("do")}'
         return context
 
+
 class RatingCreateView(View):
     model = Rating
 
@@ -235,4 +236,3 @@ class RatingCreateView(View):
                 rating.save()
                 return JsonResponse({'status': 'updated', 'rating_sum': rating.article.get_sum_rating()})
         return JsonResponse({'status': 'created', 'rating_sum': rating.article.get_sum_rating()})
-
