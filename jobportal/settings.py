@@ -58,6 +58,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
+    'modules.system.middleware.ActiveUserMiddleware',
 ]
 
 INTERNAL_IPS = [
@@ -65,6 +66,13 @@ INTERNAL_IPS = [
 ]
 
 ROOT_URLCONF = 'jobportal.urls'
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.jobportal.filebased.FileBasedCache',
+        'LOCATION': (BASE_DIR / 'cache'),
+    }
+}
 
 TEMPLATES = [
     {
