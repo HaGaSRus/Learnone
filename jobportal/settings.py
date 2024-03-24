@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sitemap',
     'modules.job.apps.JobConfig',
     'modules.system.apps.SystemConfig',
     'modules.services',
