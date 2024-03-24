@@ -1,4 +1,7 @@
 from django.db import models
+from django.contrib.auth.models import User
+from django.utils import timezone
+from django.core.cache import cache
 from django.contrib.auth import get_user_model
 from django.core.validators import FileExtensionValidator
 from django.db.models.signals import post_save
@@ -51,6 +54,12 @@ class Profile(models.Model):
         Ссылка на профиль
         """
         return reverse('profile_detail', kwargs={'slug': self.slug})
+
+    def is_online(self):
+        last_seen = cache.get(f'last-seen-{self.user.id}')
+        if last_seen is not None and timezone.now() < last_seen + timezone.timedelta(seconds=300):
+            return True
+        return False
 
     @property
     def get_avatar(self):
