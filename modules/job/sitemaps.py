@@ -3,6 +3,7 @@ from django.urls import reverse
 
 from .models import Article
 
+
 class ArticleSitemap(Sitemap):
     """
     Карта-сайта для статей
