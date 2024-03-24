@@ -18,4 +18,3 @@ class LatestArticlesFeed(Feed):
 
     def item_link(self, item):
         return reverse('articles_detail', args=[item.slug])
-

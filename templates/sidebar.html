@@ -29,6 +29,7 @@
 				{% empty %}
 				<li>Популярных тегов не найдено.</li>
 				{% endfor %}
+				<a href="{% url 'latest_articles_feed' %}">Подписаться на RSS ленту</a>
 			</ul>
 		</div>
 	</div>
