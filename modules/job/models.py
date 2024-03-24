@@ -1,10 +1,10 @@
-from django.db import models
 from django.core.validators import FileExtensionValidator
 from django.contrib.auth import get_user_model
 from django.urls import reverse
 from taggit.managers import TaggableManager
 from django.db import models
 from django_ckeditor_5.fields import CKEditor5Field
+from modules.services.utils import  image_compress
 
 from mptt.models import MPTTModel, TreeForeignKey
 
@@ -86,13 +86,20 @@ class Article(models.Model):
     def get_absolute_url(self):
         return reverse('articles_detail', kwargs={'slug': self.slug})
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.__thumbnail = self.thumbnail if self.pk else None
+
     def save(self, *args, **kwargs):
         """
         Сохранение полей модели при их отсутствии заполнения
         """
         if not self.slug:
             self.slug = slugify(self)
-        return super().save(*args, **kwargs)
+        super().save(*args, **kwargs)
+
+        if self.__thumbnail != self.thumbnail and self.thumbnail:
+            image_compress(self.thumbnail.path, width=500, height=500)
 
     tags = TaggableManager()
 
