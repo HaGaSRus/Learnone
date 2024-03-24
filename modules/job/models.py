@@ -28,7 +28,7 @@ class Article(models.Model):
             """
             Список статей (SQL запрос с фильтрацией для страницы списка статей)
             """
-            return self.get_queryset().select_related('author', 'category').filter(status='published')
+            return self.get_queryset().select_related('author', 'category').prefetch_related('ratings').filter(status='published')
 
         def detail(self):
             """
@@ -36,7 +36,7 @@ class Article(models.Model):
             """
             return self.get_queryset()\
                 .select_related('author', 'category')\
-                .prefetch_related('comments', 'comments__author', 'comments__author__profile', 'tags')\
+                .prefetch_related('comments', 'comments__author', 'comments__author__profile', 'tags', 'ratings')\
                 .filter(status='published')
 
     STATUS_OPTIONS = (
@@ -95,6 +95,9 @@ class Article(models.Model):
         return super().save(*args, **kwargs)
 
     tags = TaggableManager()
+
+    def get_sum_rating(self):
+        return sum([rating.value for rating in self.ratings.all()])
 
 
 class Category(MPTTModel):

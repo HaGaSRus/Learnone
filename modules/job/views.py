@@ -1,7 +1,7 @@
 from django.http import JsonResponse
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView, View
 from django.urls import reverse_lazy
-from .models import Article, Category, Comment
+from .models import Article, Category, Comment, Rating
 from .forms import ArticleCreateForm, ArticleUpdateForm, CommentCreateForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
@@ -14,6 +14,7 @@ from django.views.generic import ListView
 from django.shortcuts import render, redirect
 from django.core.paginator import Paginator
 from ..services.mixins import AuthorRequiredMixin
+from ..services.utils import get_client_ip
 
 
 class ArticleListView(ListView):
@@ -208,3 +209,30 @@ class ArticleSearchResultView(ListView):
         context = super().get_context_data(**kwargs)
         context['title'] = f'Результаты поиска: {self.request.GET.get("do")}'
         return context
+
+class RatingCreateView(View):
+    model = Rating
+
+    def post(self, request, *args, **kwargs):
+        article_id = request.POST.get('article_id')
+        value = int(request.POST.get('value'))
+        ip_address = get_client_ip(request)
+        user = request.user if request.user.is_authenticated else None
+
+        rating, created = self.model.objects.get_or_create(
+            article_id=article_id,
+            ip_address=ip_address,
+            defaults={'value': value, 'user': user},
+        )
+
+        if not created:
+            if rating.value == value:
+                rating.delete()
+                return JsonResponse({'status': 'deleted', 'rating_sum': rating.article.get_sum_rating()})
+            else:
+                rating.value = value
+                rating.user = user
+                rating.save()
+                return JsonResponse({'status': 'updated', 'rating_sum': rating.article.get_sum_rating()})
+        return JsonResponse({'status': 'created', 'rating_sum': rating.article.get_sum_rating()})
+
