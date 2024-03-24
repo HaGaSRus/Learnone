@@ -74,6 +74,10 @@ CACHES = {
     }
 }
 
+AUTHENTICATION_BACKENDS = [
+    'modules.system.backends.UserModelBackend'
+]
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
