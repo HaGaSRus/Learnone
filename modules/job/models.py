@@ -1,15 +1,15 @@
+from django.db import models
 from django.core.validators import FileExtensionValidator
 from django.contrib.auth import get_user_model
 from django.urls import reverse
 from taggit.managers import TaggableManager
-from django.db import models
 from django_ckeditor_5.fields import CKEditor5Field
-from modules.services.utils import  image_compress
+from datetime import date
 
 from mptt.models import MPTTModel, TreeForeignKey
 
 from pytils.translit import slugify
-
+from modules.services.utils import image_compress
 
 User = get_user_model()
 
@@ -28,7 +28,7 @@ class Article(models.Model):
             """
             Список статей (SQL запрос с фильтрацией для страницы списка статей)
             """
-            return self.get_queryset().select_related('author', 'category').prefetch_related('ratings').filter(status='published')
+            return self.get_queryset().select_related('author', 'category').prefetch_related('ratings', 'views').filter(status='published')
 
         def detail(self):
             """
@@ -80,6 +80,9 @@ class Article(models.Model):
     short_description = CKEditor5Field(max_length=500, verbose_name='Краткое описание', config_name='extends')
     full_description = CKEditor5Field(verbose_name='Полное описание', config_name='extends')
 
+    def get_sum_rating(self):
+        return sum([rating.value for rating in self.ratings.all()])
+
     def __str__(self):
         return self.title
 
@@ -89,6 +92,19 @@ class Article(models.Model):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.__thumbnail = self.thumbnail if self.pk else None
+
+    def get_view_count(self):
+        """
+        Возвращает количество просмотров для данной статьи
+        """
+        return self.views.count()
+
+    def get_today_view_count(self):
+        """
+        Возвращает количество просмотров для данной статьи за сегодняшний день
+        """
+        today = date.today()
+        return self.views.filter(viewed_on__date=today).count()
 
     def save(self, *args, **kwargs):
         """
@@ -102,9 +118,6 @@ class Article(models.Model):
             image_compress(self.thumbnail.path, width=500, height=500)
 
     tags = TaggableManager()
-
-    def get_sum_rating(self):
-        return sum([rating.value for rating in self.ratings.all()])
 
 
 class Category(MPTTModel):
@@ -158,12 +171,19 @@ class Comment(MPTTModel):
     )
 
     article = models.ForeignKey(Article, on_delete=models.CASCADE, verbose_name='Статья', related_name='comments')
-    author = models.ForeignKey(User, verbose_name='Автор комментария', on_delete=models.CASCADE, related_name='comments_author')
+    # Автор комментария (пользователь) если авторизован
+    author = models.ForeignKey(User, verbose_name='Автор комментария', on_delete=models.CASCADE,
+                               related_name='comments_author', null=True, blank=True)
+    # Гости сайта, если неавторизованные
+    name = models.CharField(max_length=255, verbose_name='Имя посетителя', blank=True)
+    email = models.EmailField(max_length=255, verbose_name='Email посетителя', blank=True)
+    # Прочие поля
     content = models.TextField(verbose_name='Текст комментария', max_length=3000)
     time_create = models.DateTimeField(verbose_name='Время добавления', auto_now_add=True)
     time_update = models.DateTimeField(verbose_name='Время обновления', auto_now=True)
     status = models.CharField(choices=STATUS_OPTIONS, default='published', verbose_name='Статус поста', max_length=10)
-    parent = TreeForeignKey('self', verbose_name='Родительский комментарий', null=True, blank=True, related_name='children', on_delete=models.CASCADE)
+    parent = TreeForeignKey('self', verbose_name='Родительский комментарий', null=True, blank=True,
+                            related_name='children', on_delete=models.CASCADE)
 
     class MTTMeta:
         order_insertion_by = ('-time_create',)
@@ -176,7 +196,16 @@ class Comment(MPTTModel):
         verbose_name_plural = 'Комментарии'
 
     def __str__(self):
-        return f'{self.author}:{self.content}'
+        if self.author:
+            return f'{self.author}:{self.content}'
+        else:
+            return f'{self.name} ({self.email}):{self.content}'
+
+    @property
+    def get_avatar(self):
+        if self.author:
+            return self.author.profile.get_avatar
+        return f'https://ui-avatars.com/api/?size=190&background=random&name={self.name}'
 
 
 class Rating(models.Model):
@@ -191,7 +220,7 @@ class Rating(models.Model):
 
     class Meta:
         unique_together = ('article', 'ip_address')
-        ordering = ('-time_create', )
+        ordering = ('-time_create',)
         indexes = [models.Index(fields=['-time_create', 'value'])]
         verbose_name = 'Рейтинг'
         verbose_name_plural = 'Рейтинги'
@@ -199,5 +228,22 @@ class Rating(models.Model):
     def __str__(self):
         return self.article.title
 
+
+class ViewCount(models.Model):
+    """
+    Модель просмотров для статей
+    """
+    article = models.ForeignKey('Article', on_delete=models.CASCADE, related_name='views')
+    ip_address = models.GenericIPAddressField(verbose_name='IP адрес')
+    viewed_on = models.DateTimeField(auto_now_add=True, verbose_name='Дата просмотра')
+
+    class Meta:
+        ordering = ('-viewed_on',)
+        indexes = [models.Index(fields=['-viewed_on'])]
+        verbose_name = 'Просмотр'
+        verbose_name_plural = 'Просмотры'
+
+    def __str__(self):
+        return self.article.title
 
 

@@ -15,6 +15,7 @@ from django.shortcuts import render, redirect
 from django.core.paginator import Paginator
 from ..services.mixins import AuthorRequiredMixin
 from ..services.utils import get_client_ip
+from .mixins import ViewCountMixin
 
 
 class ArticleListView(ListView):
@@ -30,7 +31,7 @@ class ArticleListView(ListView):
         return context
 
 
-class ArticleDetailView(DetailView):
+class ArticleDetailView(ViewCountMixin, DetailView):
     model = Article
     template_name = 'blog/articles_detail.html'
     context_object_name = 'article'
