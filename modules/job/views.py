@@ -9,7 +9,6 @@ from taggit.models import Tag
 import random
 from django.db.models import Count
 from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank
-from django.views.generic import ListView
 
 from django.shortcuts import render, redirect
 from django.core.paginator import Paginator

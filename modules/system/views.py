@@ -21,6 +21,7 @@ from .forms import (UserUpdateForm, ProfileUpdateForm, UserRegisterForm, UserLog
 from ..services.mixins import UserIsNotAuthenticated
 from ..services.email import send_contact_email_message
 from ..services.utils import get_client_ip
+from ..services.tasks import send_activate_email_message_task, send_contact_email_message_task
 
 User = get_user_model()
 
@@ -56,6 +57,7 @@ class UserRegisterView(UserIsNotAuthenticated, CreateView):
         user = form.save(commit=False)
         user.is_active = False
         user.save()
+        send_activate_email_message_task.delay(user.id)
         # Функционал для отправки письма и генерации токена
         token = default_token_generator.make_token(user)
         uid = urlsafe_base64_encode(force_bytes(user.pk))
@@ -237,7 +239,7 @@ class FeedbackCreateView(SuccessMessageMixin, CreateView):
             feedback.ip_address = get_client_ip(self.request)
             if self.request.user.is_authenticated:
                 feedback.user = self.request.user
-            send_contact_email_message(feedback.subject, feedback.email, feedback.content, feedback.ip_address, feedback.user_id)
+            send_contact_email_message_task.delay(feedback.subject, feedback.email, feedback.content, feedback.ip_address, feedback.user_id)
         return super().form_valid(form)
 
 
