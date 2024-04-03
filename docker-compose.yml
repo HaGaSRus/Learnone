@@ -14,7 +14,7 @@ services:
       - '8000:8000'
     container_name: django
     env_file:
-      - docker/env/env.prod
+      - docker/env/.env.prod
     volumes:
       - ./:/huntjob
       - static:/huntjob/static
@@ -25,7 +25,7 @@ services:
     command: sh -c "python manage.py collectstatic --no-input &&
                     python manage.py makemigrations &&
                     python manage.py migrate &&
-                    gunicorn --workers=4 --reload --max-requests=1000 backend.wsgi -b 0.0.0.0:8000"
+                    gunicorn --workers=4 --reload --max-requests=1000 backend.wsgi -b 0.0.0.0:8000""
 
   nginx:
     container_name: nginx
@@ -51,7 +51,7 @@ services:
     container_name: postgres
     restart: always
     env_file:
-      - docker/env/env.prod
+      - docker/env/.env.prod
     volumes:
       - pgdata:/var/lib/postgresql/data/
 
@@ -70,7 +70,7 @@ services:
     container_name: celery-worker
     restart: always
     env_file:
-      - docker/env/env.prod
+      - docker/env/.env.prod
     volumes:
       - ./:/huntjob
       - media:/huntjob/media
@@ -82,7 +82,7 @@ services:
     build: .
     container_name: celery-beat
     env_file:
-     - docker/env/env.prod
+      - docker/env/.env.prod
     depends_on:
       - redis
     command: celery -A jobportal beat --loglevel=info --logfile=./docker/logs/celery-beat.log
