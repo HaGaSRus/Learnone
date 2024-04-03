@@ -14,7 +14,7 @@ services:
       - '8000:8000'
     container_name: django
     env_file:
-      - docker/env/..env.prod
+      - docker/env/env.prod
     volumes:
       - ./:/huntjob
       - static:/huntjob/static
@@ -51,7 +51,7 @@ services:
     container_name: postgres
     restart: always
     env_file:
-      - docker/env/..env.prod
+      - docker/env/env.prod
     volumes:
       - pgdata:/var/lib/postgresql/data/
 
@@ -59,7 +59,7 @@ services:
     image: redis:alpine
     container_name: redis
     env_file:
-      - docker/env/..env.prod
+      - docker/env/.env.prod
     expose:
       - 6379
     volumes:
@@ -70,7 +70,7 @@ services:
     container_name: celery-worker
     restart: always
     env_file:
-      - docker/env/..env.prod
+      - docker/env/env.prod
     volumes:
       - ./:/huntjob
       - media:/huntjob/media
@@ -82,7 +82,7 @@ services:
     build: .
     container_name: celery-beat
     env_file:
-     - docker/env/..env.prod
+     - docker/env/env.prod
     depends_on:
       - redis
     command: celery -A jobportal beat --loglevel=info --logfile=./docker/logs/celery-beat.log
