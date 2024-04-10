@@ -1,0 +1,984 @@
+[
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add log entry",
+        "content_type": [
+            "admin",
+            "logentry"
+        ],
+        "codename": "add_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change log entry",
+        "content_type": [
+            "admin",
+            "logentry"
+        ],
+        "codename": "change_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete log entry",
+        "content_type": [
+            "admin",
+            "logentry"
+        ],
+        "codename": "delete_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view log entry",
+        "content_type": [
+            "admin",
+            "logentry"
+        ],
+        "codename": "view_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add permission",
+        "content_type": [
+            "auth",
+            "permission"
+        ],
+        "codename": "add_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change permission",
+        "content_type": [
+            "auth",
+            "permission"
+        ],
+        "codename": "change_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete permission",
+        "content_type": [
+            "auth",
+            "permission"
+        ],
+        "codename": "delete_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view permission",
+        "content_type": [
+            "auth",
+            "permission"
+        ],
+        "codename": "view_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add group",
+        "content_type": [
+            "auth",
+            "group"
+        ],
+        "codename": "add_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change group",
+        "content_type": [
+            "auth",
+            "group"
+        ],
+        "codename": "change_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete group",
+        "content_type": [
+            "auth",
+            "group"
+        ],
+        "codename": "delete_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view group",
+        "content_type": [
+            "auth",
+            "group"
+        ],
+        "codename": "view_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add user",
+        "content_type": [
+            "auth",
+            "user"
+        ],
+        "codename": "add_user"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change user",
+        "content_type": [
+            "auth",
+            "user"
+        ],
+        "codename": "change_user"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete user",
+        "content_type": [
+            "auth",
+            "user"
+        ],
+        "codename": "delete_user"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view user",
+        "content_type": [
+            "auth",
+            "user"
+        ],
+        "codename": "view_user"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add content type",
+        "content_type": [
+            "contenttypes",
+            "contenttype"
+        ],
+        "codename": "add_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change content type",
+        "content_type": [
+            "contenttypes",
+            "contenttype"
+        ],
+        "codename": "change_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete content type",
+        "content_type": [
+            "contenttypes",
+            "contenttype"
+        ],
+        "codename": "delete_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view content type",
+        "content_type": [
+            "contenttypes",
+            "contenttype"
+        ],
+        "codename": "view_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add site",
+        "content_type": [
+            "sites",
+            "site"
+        ],
+        "codename": "add_site"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change site",
+        "content_type": [
+            "sites",
+            "site"
+        ],
+        "codename": "change_site"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete site",
+        "content_type": [
+            "sites",
+            "site"
+        ],
+        "codename": "delete_site"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view site",
+        "content_type": [
+            "sites",
+            "site"
+        ],
+        "codename": "view_site"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add session",
+        "content_type": [
+            "sessions",
+            "session"
+        ],
+        "codename": "add_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change session",
+        "content_type": [
+            "sessions",
+            "session"
+        ],
+        "codename": "change_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete session",
+        "content_type": [
+            "sessions",
+            "session"
+        ],
+        "codename": "delete_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view session",
+        "content_type": [
+            "sessions",
+            "session"
+        ],
+        "codename": "view_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add Категория",
+        "content_type": [
+            "job",
+            "category"
+        ],
+        "codename": "add_category"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change Категория",
+        "content_type": [
+            "job",
+            "category"
+        ],
+        "codename": "change_category"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete Категория",
+        "content_type": [
+            "job",
+            "category"
+        ],
+        "codename": "delete_category"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view Категория",
+        "content_type": [
+            "job",
+            "category"
+        ],
+        "codename": "view_category"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add Статья",
+        "content_type": [
+            "job",
+            "article"
+        ],
+        "codename": "add_article"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change Статья",
+        "content_type": [
+            "job",
+            "article"
+        ],
+        "codename": "change_article"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete Статья",
+        "content_type": [
+            "job",
+            "article"
+        ],
+        "codename": "delete_article"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view Статья",
+        "content_type": [
+            "job",
+            "article"
+        ],
+        "codename": "view_article"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add Комментарий",
+        "content_type": [
+            "job",
+            "comment"
+        ],
+        "codename": "add_comment"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change Комментарий",
+        "content_type": [
+            "job",
+            "comment"
+        ],
+        "codename": "change_comment"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete Комментарий",
+        "content_type": [
+            "job",
+            "comment"
+        ],
+        "codename": "delete_comment"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view Комментарий",
+        "content_type": [
+            "job",
+            "comment"
+        ],
+        "codename": "view_comment"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add Рейтинг",
+        "content_type": [
+            "job",
+            "rating"
+        ],
+        "codename": "add_rating"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change Рейтинг",
+        "content_type": [
+            "job",
+            "rating"
+        ],
+        "codename": "change_rating"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete Рейтинг",
+        "content_type": [
+            "job",
+            "rating"
+        ],
+        "codename": "delete_rating"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view Рейтинг",
+        "content_type": [
+            "job",
+            "rating"
+        ],
+        "codename": "view_rating"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add Просмотр",
+        "content_type": [
+            "job",
+            "viewcount"
+        ],
+        "codename": "add_viewcount"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change Просмотр",
+        "content_type": [
+            "job",
+            "viewcount"
+        ],
+        "codename": "change_viewcount"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete Просмотр",
+        "content_type": [
+            "job",
+            "viewcount"
+        ],
+        "codename": "delete_viewcount"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view Просмотр",
+        "content_type": [
+            "job",
+            "viewcount"
+        ],
+        "codename": "view_viewcount"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add Профиль",
+        "content_type": [
+            "system",
+            "profile"
+        ],
+        "codename": "add_profile"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change Профиль",
+        "content_type": [
+            "system",
+            "profile"
+        ],
+        "codename": "change_profile"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete Профиль",
+        "content_type": [
+            "system",
+            "profile"
+        ],
+        "codename": "delete_profile"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view Профиль",
+        "content_type": [
+            "system",
+            "profile"
+        ],
+        "codename": "view_profile"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add Обратная связь",
+        "content_type": [
+            "system",
+            "feedback"
+        ],
+        "codename": "add_feedback"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change Обратная связь",
+        "content_type": [
+            "system",
+            "feedback"
+        ],
+        "codename": "change_feedback"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete Обратная связь",
+        "content_type": [
+            "system",
+            "feedback"
+        ],
+        "codename": "delete_feedback"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view Обратная связь",
+        "content_type": [
+            "system",
+            "feedback"
+        ],
+        "codename": "view_feedback"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add tag",
+        "content_type": [
+            "taggit",
+            "tag"
+        ],
+        "codename": "add_tag"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change tag",
+        "content_type": [
+            "taggit",
+            "tag"
+        ],
+        "codename": "change_tag"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete tag",
+        "content_type": [
+            "taggit",
+            "tag"
+        ],
+        "codename": "delete_tag"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view tag",
+        "content_type": [
+            "taggit",
+            "tag"
+        ],
+        "codename": "view_tag"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add tagged item",
+        "content_type": [
+            "taggit",
+            "taggeditem"
+        ],
+        "codename": "add_taggeditem"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change tagged item",
+        "content_type": [
+            "taggit",
+            "taggeditem"
+        ],
+        "codename": "change_taggeditem"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete tagged item",
+        "content_type": [
+            "taggit",
+            "taggeditem"
+        ],
+        "codename": "delete_taggeditem"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view tagged item",
+        "content_type": [
+            "taggit",
+            "taggeditem"
+        ],
+        "codename": "view_taggeditem"
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$600000$2RrXFNPVwsfU83cJH4Wadw$OgFI8NNjUjgPL0R6WqCmNGHg9zO/4cQSQ3BeSVVkZnI=",
+        "last_login": "2024-04-09T10:21:13.497Z",
+        "is_superuser": true,
+        "username": "HaG",
+        "first_name": "Георгий",
+        "last_name": "Трофимов",
+        "email": "tro37295@gmail.com",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2024-04-08T10:04:40.613Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$600000$FoIM6THDFJ4Ryf9vf9PxLc$8pqtd4r3SdZXDbtC8RZSxgqQXlq96mEsjomFLbFP3KE=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "HaGaS",
+        "first_name": "Иван",
+        "last_name": "Иванов",
+        "email": "tro20000@yandex.ru",
+        "is_staff": false,
+        "is_active": false,
+        "date_joined": "2024-04-09T09:41:18.324Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$600000$0VPPK8aGdiPDLJEJK3tUua$Hx7Fb7IrSMdiqdoKVrFuS8PllCm4+ByIx1NHEJDQ15g=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "AnaStaS",
+        "first_name": "Анастасия",
+        "last_name": "Трофимова",
+        "email": "anastas2v2@gmail.com",
+        "is_staff": false,
+        "is_active": false,
+        "date_joined": "2024-04-09T10:20:35.986Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "sites.site",
+    "fields": {
+        "domain": "learnone.ru",
+        "name": "learnone.ru"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "4gqipbuxapxhp9v4h2h7c192ucqo53v3",
+    "fields": {
+        "session_data": ".eJxVi70OwiAQgN-F2RDgoFRHd0dncnBHMLY26bWDMb67Nemg6_fzUgnXpaVVeE43Uidl1eGXZSx3fnzFONE6sGh5ysKj3oXo65ZdJuLhvKd_f0Np2xwrelM4YKbMCIGAqBJ5j7nDnqspBlz0FFwEiOUILruuWupttIxU1PsDCls5BA:1ru7xT:mQaf-P5LHYjMb34xRlawyL1ihB_2W9lEjyyTdPeiGhg",
+        "expire_date": "2024-04-23T09:40:03.056Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "k4qisd60je18dvasf2xdtjonucjop4zc",
+    "fields": {
+        "session_data": ".eJxVi70OwiAQgN-F2RDgoFRHd0dncnBHMLY26bWDMb67Nemg6_fzUgnXpaVVeE43Uidl1eGXZSx3fnzFONE6sGh5ysKj3oXo65ZdJuLhvKd_f0Np2xwrelM4YKbMCIGAqBJ5j7nDnqspBlz0FFwEiOUILruuWupttIxU1PsDCls5BA:1ru8bJ:VKRewwgrhU7ikfPLEC1LlaJRl1US5opgACuC8KR23mM",
+        "expire_date": "2024-04-23T10:21:13.279Z"
+    }
+},
+{
+    "model": "job.article",
+    "pk": 1,
+    "fields": {
+        "title": "Первая тестовая статья",
+        "slug": "pervaya-testovaya-statya",
+        "status": "published",
+        "time_create": "2024-04-09T08:56:00.138Z",
+        "time_update": "2024-04-09T08:56:00.228Z",
+        "author": [
+            "HaG"
+        ],
+        "updater": null,
+        "fixed": false,
+        "category": 1,
+        "thumbnail": "images/thumbnails/2024/04/09/python-classroom.jpg",
+        "short_description": "<p>Впервые оно работает!</p>",
+        "full_description": "<p>Вот это да!!!!</p>"
+    }
+},
+{
+    "model": "job.article",
+    "pk": 2,
+    "fields": {
+        "title": "Вторая текстовая статья",
+        "slug": "vtoraya-tekstovaya-statya",
+        "status": "published",
+        "time_create": "2024-04-09T10:22:30.443Z",
+        "time_update": "2024-04-09T10:22:30.627Z",
+        "author": [
+            "HaG"
+        ],
+        "updater": null,
+        "fixed": false,
+        "category": 1,
+        "thumbnail": "images/thumbnails/2024/04/09/IMG_2545.jpeg",
+        "short_description": "<p>Оно все еще работает😂😂😂</p>",
+        "full_description": "<p>Проверка прошла успешно</p>"
+    }
+},
+{
+    "model": "job.category",
+    "pk": 1,
+    "fields": {
+        "title": "Python",
+        "slug": "python",
+        "description": "Основа",
+        "parent": null,
+        "lft": 1,
+        "rght": 4,
+        "tree_id": 1,
+        "level": 0
+    }
+},
+{
+    "model": "job.category",
+    "pk": 2,
+    "fields": {
+        "title": "Python",
+        "slug": "python",
+        "description": "Все о разработке на Python",
+        "parent": 1,
+        "lft": 2,
+        "rght": 3,
+        "tree_id": 1,
+        "level": 1
+    }
+},
+{
+    "model": "job.comment",
+    "pk": 1,
+    "fields": {
+        "article": 1,
+        "author": [
+            "HaG"
+        ],
+        "name": "",
+        "email": "",
+        "content": "Тест",
+        "time_create": "2024-04-09T08:56:18.665Z",
+        "time_update": "2024-04-09T08:56:18.665Z",
+        "status": "published",
+        "parent": null,
+        "lft": 1,
+        "rght": 4,
+        "tree_id": 1,
+        "level": 0
+    }
+},
+{
+    "model": "job.comment",
+    "pk": 2,
+    "fields": {
+        "article": 1,
+        "author": [
+            "HaG"
+        ],
+        "name": "",
+        "email": "",
+        "content": "HaG, Дерево",
+        "time_create": "2024-04-09T08:57:23.937Z",
+        "time_update": "2024-04-09T08:57:23.937Z",
+        "status": "published",
+        "parent": 1,
+        "lft": 2,
+        "rght": 3,
+        "tree_id": 1,
+        "level": 1
+    }
+},
+{
+    "model": "job.comment",
+    "pk": 3,
+    "fields": {
+        "article": 2,
+        "author": [
+            "HaG"
+        ],
+        "name": "",
+        "email": "",
+        "content": "Попробую прокомментировать",
+        "time_create": "2024-04-09T10:23:01.396Z",
+        "time_update": "2024-04-09T10:23:01.396Z",
+        "status": "published",
+        "parent": null,
+        "lft": 1,
+        "rght": 2,
+        "tree_id": 2,
+        "level": 0
+    }
+},
+{
+    "model": "job.rating",
+    "pk": 2,
+    "fields": {
+        "article": 2,
+        "user": [
+            "HaG"
+        ],
+        "value": 1,
+        "time_create": "2024-04-09T10:22:47.551Z",
+        "ip_address": "188.186.6.79"
+    }
+},
+{
+    "model": "job.viewcount",
+    "pk": 1,
+    "fields": {
+        "article": 1,
+        "ip_address": "188.186.6.79",
+        "viewed_on": "2024-04-09T08:56:00.420Z"
+    }
+},
+{
+    "model": "job.viewcount",
+    "pk": 2,
+    "fields": {
+        "article": 2,
+        "ip_address": "188.186.6.79",
+        "viewed_on": "2024-04-09T10:22:30.759Z"
+    }
+},
+{
+    "model": "system.profile",
+    "pk": 1,
+    "fields": {
+        "user": [
+            "HaG"
+        ],
+        "slug": "hag",
+        "avatar": "images/avatars/2024/04/09/python_serv.jpg",
+        "bio": "Первые тесты подобного функционала и объема работы",
+        "birth_date": "2000-02-02",
+        "following": []
+    }
+},
+{
+    "model": "system.profile",
+    "pk": 4,
+    "fields": {
+        "user": [
+            "HaGaS"
+        ],
+        "slug": "hagas",
+        "avatar": "images/avatars/default.jpg",
+        "bio": "",
+        "birth_date": null,
+        "following": []
+    }
+},
+{
+    "model": "system.profile",
+    "pk": 5,
+    "fields": {
+        "user": [
+            "AnaStaS"
+        ],
+        "slug": "anastas",
+        "avatar": "images/avatars/default.jpg",
+        "bio": "",
+        "birth_date": null,
+        "following": []
+    }
+}
+]

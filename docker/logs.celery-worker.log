@@ -1,0 +1,434 @@
+[2024-04-09 13:52:04,971: WARNING/MainProcess] /usr/local/lib/python3.12/site-packages/celery/worker/consumer/consumer.py:507: CPendingDeprecationWarning: The broker_connection_retry configuration setting will no longer determine
+whether broker connection retries are made during startup in Celery 6.0 and above.
+If you wish to retain the existing behavior for retrying connections on startup,
+you should set broker_connection_retry_on_startup to True.
+  warnings.warn(
+
+[2024-04-09 13:52:05,037: INFO/MainProcess] Connected to redis://redis:6379/0
+[2024-04-09 13:52:05,038: WARNING/MainProcess] /usr/local/lib/python3.12/site-packages/celery/worker/consumer/consumer.py:507: CPendingDeprecationWarning: The broker_connection_retry configuration setting will no longer determine
+whether broker connection retries are made during startup in Celery 6.0 and above.
+If you wish to retain the existing behavior for retrying connections on startup,
+you should set broker_connection_retry_on_startup to True.
+  warnings.warn(
+
+[2024-04-09 13:52:05,048: INFO/MainProcess] mingle: searching for neighbors
+[2024-04-09 13:52:06,074: INFO/MainProcess] mingle: all alone
+[2024-04-09 13:52:06,111: INFO/MainProcess] celery@5df3e4c15229 ready.
+[2024-04-09 13:53:53,807: WARNING/MainProcess] /usr/local/lib/python3.12/site-packages/celery/worker/consumer/consumer.py:507: CPendingDeprecationWarning: The broker_connection_retry configuration setting will no longer determine
+whether broker connection retries are made during startup in Celery 6.0 and above.
+If you wish to retain the existing behavior for retrying connections on startup,
+you should set broker_connection_retry_on_startup to True.
+  warnings.warn(
+
+[2024-04-09 13:53:53,863: INFO/MainProcess] Connected to redis://redis:6379/0
+[2024-04-09 13:53:53,865: WARNING/MainProcess] /usr/local/lib/python3.12/site-packages/celery/worker/consumer/consumer.py:507: CPendingDeprecationWarning: The broker_connection_retry configuration setting will no longer determine
+whether broker connection retries are made during startup in Celery 6.0 and above.
+If you wish to retain the existing behavior for retrying connections on startup,
+you should set broker_connection_retry_on_startup to True.
+  warnings.warn(
+
+[2024-04-09 13:53:53,872: INFO/MainProcess] mingle: searching for neighbors
+[2024-04-09 13:53:54,898: INFO/MainProcess] mingle: all alone
+[2024-04-09 13:53:54,941: INFO/MainProcess] celery@79158a2086a5 ready.
+[2024-04-09 14:18:58,327: WARNING/MainProcess] /usr/local/lib/python3.12/site-packages/celery/worker/consumer/consumer.py:507: CPendingDeprecationWarning: The broker_connection_retry configuration setting will no longer determine
+whether broker connection retries are made during startup in Celery 6.0 and above.
+If you wish to retain the existing behavior for retrying connections on startup,
+you should set broker_connection_retry_on_startup to True.
+  warnings.warn(
+
+[2024-04-09 14:18:58,383: INFO/MainProcess] Connected to redis://redis:6379/0
+[2024-04-09 14:18:58,384: WARNING/MainProcess] /usr/local/lib/python3.12/site-packages/celery/worker/consumer/consumer.py:507: CPendingDeprecationWarning: The broker_connection_retry configuration setting will no longer determine
+whether broker connection retries are made during startup in Celery 6.0 and above.
+If you wish to retain the existing behavior for retrying connections on startup,
+you should set broker_connection_retry_on_startup to True.
+  warnings.warn(
+
+[2024-04-09 14:18:58,392: INFO/MainProcess] mingle: searching for neighbors
+[2024-04-09 14:18:59,413: INFO/MainProcess] mingle: all alone
+[2024-04-09 14:18:59,444: INFO/MainProcess] celery@e06a205cf572 ready.
+[2024-04-09 14:20:04,027: INFO/MainProcess] Task modules.services.tasks.send_activate_email_message_task[480128e9-7a62-4f8f-a429-4c89daef6ecc] received
+[2024-04-09 14:22:14,440: ERROR/ForkPoolWorker-1] Task modules.services.tasks.send_activate_email_message_task[480128e9-7a62-4f8f-a429-4c89daef6ecc] raised unexpected: OSError(101, 'Network unreachable')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/celery/app/trace.py", line 477, in trace_task
+    R = retval = fun(*args, **kwargs)
+                 ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/celery/app/trace.py", line 760, in __protected_call__
+    return self.run(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/modules/services/tasks.py", line 13, in send_activate_email_message_task
+    return send_activate_email_message(user_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/modules/services/email.py", line 43, in send_activate_email_message
+    return user.email_user(subject, message)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/contrib/auth/models.py", line 402, in email_user
+    send_mail(subject, message, from_email, [self.email], **kwargs)
+  File "/usr/local/lib/python3.12/site-packages/django/core/mail/__init__.py", line 87, in send_mail
+    return mail.send()
+           ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/core/mail/message.py", line 298, in send
+    return self.get_connection(fail_silently).send_messages([self])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/core/mail/backends/smtp.py", line 127, in send_messages
+    new_conn_created = self.open()
+                       ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/core/mail/backends/smtp.py", line 85, in open
+    self.connection = self.connection_class(
+                      ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/smtplib.py", line 255, in __init__
+    (code, msg) = self.connect(host, port)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/smtplib.py", line 341, in connect
+    self.sock = self._get_socket(host, port, self.timeout)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/smtplib.py", line 312, in _get_socket
+    return socket.create_connection((host, port), timeout,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/socket.py", line 852, in create_connection
+    raise exceptions[0]
+  File "/usr/local/lib/python3.12/socket.py", line 837, in create_connection
+    sock.connect(sa)
+OSError: [Errno 101] Network unreachable
+[2024-04-09 14:32:04,213: WARNING/MainProcess] /usr/local/lib/python3.12/site-packages/celery/worker/consumer/consumer.py:507: CPendingDeprecationWarning: The broker_connection_retry configuration setting will no longer determine
+whether broker connection retries are made during startup in Celery 6.0 and above.
+If you wish to retain the existing behavior for retrying connections on startup,
+you should set broker_connection_retry_on_startup to True.
+  warnings.warn(
+
+[2024-04-09 14:32:04,298: INFO/MainProcess] Connected to redis://redis:6379/0
+[2024-04-09 14:32:04,300: WARNING/MainProcess] /usr/local/lib/python3.12/site-packages/celery/worker/consumer/consumer.py:507: CPendingDeprecationWarning: The broker_connection_retry configuration setting will no longer determine
+whether broker connection retries are made during startup in Celery 6.0 and above.
+If you wish to retain the existing behavior for retrying connections on startup,
+you should set broker_connection_retry_on_startup to True.
+  warnings.warn(
+
+[2024-04-09 14:32:04,322: INFO/MainProcess] mingle: searching for neighbors
+[2024-04-09 14:32:05,353: INFO/MainProcess] mingle: all alone
+[2024-04-09 14:32:05,399: INFO/MainProcess] celery@9199b09c04f5 ready.
+[2024-04-09 14:33:25,983: INFO/MainProcess] Task modules.services.tasks.send_activate_email_message_task[cf37e4d0-865b-4e93-b675-9ad2fc020f72] received
+[2024-04-09 14:35:37,256: ERROR/ForkPoolWorker-1] Task modules.services.tasks.send_activate_email_message_task[cf37e4d0-865b-4e93-b675-9ad2fc020f72] raised unexpected: OSError(101, 'Network unreachable')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/celery/app/trace.py", line 477, in trace_task
+    R = retval = fun(*args, **kwargs)
+                 ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/celery/app/trace.py", line 760, in __protected_call__
+    return self.run(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/modules/services/tasks.py", line 13, in send_activate_email_message_task
+    return send_activate_email_message(user_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/modules/services/email.py", line 43, in send_activate_email_message
+    return user.email_user(subject, message)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/contrib/auth/models.py", line 402, in email_user
+    send_mail(subject, message, from_email, [self.email], **kwargs)
+  File "/usr/local/lib/python3.12/site-packages/django/core/mail/__init__.py", line 87, in send_mail
+    return mail.send()
+           ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/core/mail/message.py", line 298, in send
+    return self.get_connection(fail_silently).send_messages([self])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/core/mail/backends/smtp.py", line 127, in send_messages
+    new_conn_created = self.open()
+                       ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/core/mail/backends/smtp.py", line 85, in open
+    self.connection = self.connection_class(
+                      ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/smtplib.py", line 255, in __init__
+    (code, msg) = self.connect(host, port)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/smtplib.py", line 341, in connect
+    self.sock = self._get_socket(host, port, self.timeout)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/smtplib.py", line 312, in _get_socket
+    return socket.create_connection((host, port), timeout,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/socket.py", line 852, in create_connection
+    raise exceptions[0]
+  File "/usr/local/lib/python3.12/socket.py", line 837, in create_connection
+    sock.connect(sa)
+OSError: [Errno 101] Network unreachable
+[2024-04-09 14:38:39,586: WARNING/MainProcess] /usr/local/lib/python3.12/site-packages/celery/worker/consumer/consumer.py:507: CPendingDeprecationWarning: The broker_connection_retry configuration setting will no longer determine
+whether broker connection retries are made during startup in Celery 6.0 and above.
+If you wish to retain the existing behavior for retrying connections on startup,
+you should set broker_connection_retry_on_startup to True.
+  warnings.warn(
+
+[2024-04-09 14:38:39,647: INFO/MainProcess] Connected to redis://redis:6379/0
+[2024-04-09 14:38:39,651: WARNING/MainProcess] /usr/local/lib/python3.12/site-packages/celery/worker/consumer/consumer.py:507: CPendingDeprecationWarning: The broker_connection_retry configuration setting will no longer determine
+whether broker connection retries are made during startup in Celery 6.0 and above.
+If you wish to retain the existing behavior for retrying connections on startup,
+you should set broker_connection_retry_on_startup to True.
+  warnings.warn(
+
+[2024-04-09 14:38:39,655: INFO/MainProcess] mingle: searching for neighbors
+[2024-04-09 14:38:40,682: INFO/MainProcess] mingle: all alone
+[2024-04-09 14:38:40,717: INFO/MainProcess] celery@a31332bea20c ready.
+[2024-04-09 14:41:19,275: INFO/MainProcess] Task modules.services.tasks.send_activate_email_message_task[703332ec-7b54-4197-acbc-850fa2882621] received
+[2024-04-09 14:43:30,345: ERROR/ForkPoolWorker-1] Task modules.services.tasks.send_activate_email_message_task[703332ec-7b54-4197-acbc-850fa2882621] raised unexpected: OSError(101, 'Network unreachable')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/celery/app/trace.py", line 477, in trace_task
+    R = retval = fun(*args, **kwargs)
+                 ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/celery/app/trace.py", line 760, in __protected_call__
+    return self.run(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/modules/services/tasks.py", line 13, in send_activate_email_message_task
+    return send_activate_email_message(user_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/modules/services/email.py", line 43, in send_activate_email_message
+    return user.email_user(subject, message)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/contrib/auth/models.py", line 402, in email_user
+    send_mail(subject, message, from_email, [self.email], **kwargs)
+  File "/usr/local/lib/python3.12/site-packages/django/core/mail/__init__.py", line 87, in send_mail
+    return mail.send()
+           ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/core/mail/message.py", line 298, in send
+    return self.get_connection(fail_silently).send_messages([self])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/core/mail/backends/smtp.py", line 127, in send_messages
+    new_conn_created = self.open()
+                       ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/core/mail/backends/smtp.py", line 85, in open
+    self.connection = self.connection_class(
+                      ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/smtplib.py", line 255, in __init__
+    (code, msg) = self.connect(host, port)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/smtplib.py", line 341, in connect
+    self.sock = self._get_socket(host, port, self.timeout)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/smtplib.py", line 312, in _get_socket
+    return socket.create_connection((host, port), timeout,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/socket.py", line 852, in create_connection
+    raise exceptions[0]
+  File "/usr/local/lib/python3.12/socket.py", line 837, in create_connection
+    sock.connect(sa)
+OSError: [Errno 101] Network unreachable
+[2024-04-09 15:20:37,040: INFO/MainProcess] Task modules.services.tasks.send_activate_email_message_task[012d18dc-d0bd-4838-b617-71e2462751fd] received
+[2024-04-09 15:22:47,587: ERROR/ForkPoolWorker-1] Task modules.services.tasks.send_activate_email_message_task[012d18dc-d0bd-4838-b617-71e2462751fd] raised unexpected: OSError(101, 'Network unreachable')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/celery/app/trace.py", line 477, in trace_task
+    R = retval = fun(*args, **kwargs)
+                 ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/celery/app/trace.py", line 760, in __protected_call__
+    return self.run(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/modules/services/tasks.py", line 13, in send_activate_email_message_task
+    return send_activate_email_message(user_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/modules/services/email.py", line 43, in send_activate_email_message
+    return user.email_user(subject, message)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/contrib/auth/models.py", line 402, in email_user
+    send_mail(subject, message, from_email, [self.email], **kwargs)
+  File "/usr/local/lib/python3.12/site-packages/django/core/mail/__init__.py", line 87, in send_mail
+    return mail.send()
+           ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/core/mail/message.py", line 298, in send
+    return self.get_connection(fail_silently).send_messages([self])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/core/mail/backends/smtp.py", line 127, in send_messages
+    new_conn_created = self.open()
+                       ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/core/mail/backends/smtp.py", line 85, in open
+    self.connection = self.connection_class(
+                      ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/smtplib.py", line 255, in __init__
+    (code, msg) = self.connect(host, port)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/smtplib.py", line 341, in connect
+    self.sock = self._get_socket(host, port, self.timeout)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/smtplib.py", line 312, in _get_socket
+    return socket.create_connection((host, port), timeout,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/socket.py", line 852, in create_connection
+    raise exceptions[0]
+  File "/usr/local/lib/python3.12/socket.py", line 837, in create_connection
+    sock.connect(sa)
+OSError: [Errno 101] Network unreachable
+[2024-04-09 16:31:00,091: INFO/MainProcess] Task modules.services.tasks.dbackup_task[24a234cc-50aa-4d7c-9891-835a2587a17d] received
+[2024-04-09 16:31:00,136: WARNING/ForkPoolWorker-1] Waiting for database dump...
+[2024-04-09 16:31:00,371: WARNING/ForkPoolWorker-1] Database successfully backed up
+[2024-04-09 16:31:00,372: INFO/ForkPoolWorker-1] Task modules.services.tasks.dbackup_task[24a234cc-50aa-4d7c-9891-835a2587a17d] succeeded in 0.2766474259988172s: None
+[2024-04-10 09:52:21,408: WARNING/MainProcess] /usr/local/lib/python3.12/site-packages/celery/worker/consumer/consumer.py:507: CPendingDeprecationWarning: The broker_connection_retry configuration setting will no longer determine
+whether broker connection retries are made during startup in Celery 6.0 and above.
+If you wish to retain the existing behavior for retrying connections on startup,
+you should set broker_connection_retry_on_startup to True.
+  warnings.warn(
+
+[2024-04-10 09:52:21,476: INFO/MainProcess] Connected to redis://redis:6379/0
+[2024-04-10 09:52:21,478: WARNING/MainProcess] /usr/local/lib/python3.12/site-packages/celery/worker/consumer/consumer.py:507: CPendingDeprecationWarning: The broker_connection_retry configuration setting will no longer determine
+whether broker connection retries are made during startup in Celery 6.0 and above.
+If you wish to retain the existing behavior for retrying connections on startup,
+you should set broker_connection_retry_on_startup to True.
+  warnings.warn(
+
+[2024-04-10 09:52:21,488: INFO/MainProcess] mingle: searching for neighbors
+[2024-04-10 09:52:22,515: INFO/MainProcess] mingle: all alone
+[2024-04-10 09:52:22,565: INFO/MainProcess] celery@a31332bea20c ready.
+[2024-04-10 09:53:53,524: INFO/MainProcess] Task modules.services.tasks.send_activate_email_message_task[e7dfc3f8-ccfa-428c-a5d7-56feaf1e551c] received
+[2024-04-10 09:56:03,149: ERROR/ForkPoolWorker-1] Task modules.services.tasks.send_activate_email_message_task[e7dfc3f8-ccfa-428c-a5d7-56feaf1e551c] raised unexpected: OSError(101, 'Network unreachable')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/celery/app/trace.py", line 477, in trace_task
+    R = retval = fun(*args, **kwargs)
+                 ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/celery/app/trace.py", line 760, in __protected_call__
+    return self.run(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/modules/services/tasks.py", line 13, in send_activate_email_message_task
+    return send_activate_email_message(user_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/modules/services/email.py", line 43, in send_activate_email_message
+    return user.email_user(subject, message)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/contrib/auth/models.py", line 402, in email_user
+    send_mail(subject, message, from_email, [self.email], **kwargs)
+  File "/usr/local/lib/python3.12/site-packages/django/core/mail/__init__.py", line 87, in send_mail
+    return mail.send()
+           ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/core/mail/message.py", line 298, in send
+    return self.get_connection(fail_silently).send_messages([self])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/core/mail/backends/smtp.py", line 127, in send_messages
+    new_conn_created = self.open()
+                       ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/core/mail/backends/smtp.py", line 85, in open
+    self.connection = self.connection_class(
+                      ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/smtplib.py", line 255, in __init__
+    (code, msg) = self.connect(host, port)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/smtplib.py", line 341, in connect
+    self.sock = self._get_socket(host, port, self.timeout)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/smtplib.py", line 312, in _get_socket
+    return socket.create_connection((host, port), timeout,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/socket.py", line 852, in create_connection
+    raise exceptions[0]
+  File "/usr/local/lib/python3.12/socket.py", line 837, in create_connection
+    sock.connect(sa)
+OSError: [Errno 101] Network unreachable
+[2024-04-10 10:13:34,008: WARNING/MainProcess] /usr/local/lib/python3.12/site-packages/celery/worker/consumer/consumer.py:507: CPendingDeprecationWarning: The broker_connection_retry configuration setting will no longer determine
+whether broker connection retries are made during startup in Celery 6.0 and above.
+If you wish to retain the existing behavior for retrying connections on startup,
+you should set broker_connection_retry_on_startup to True.
+  warnings.warn(
+
+[2024-04-10 10:13:34,091: INFO/MainProcess] Connected to redis://redis:6379/0
+[2024-04-10 10:13:34,093: WARNING/MainProcess] /usr/local/lib/python3.12/site-packages/celery/worker/consumer/consumer.py:507: CPendingDeprecationWarning: The broker_connection_retry configuration setting will no longer determine
+whether broker connection retries are made during startup in Celery 6.0 and above.
+If you wish to retain the existing behavior for retrying connections on startup,
+you should set broker_connection_retry_on_startup to True.
+  warnings.warn(
+
+[2024-04-10 10:13:34,104: INFO/MainProcess] mingle: searching for neighbors
+[2024-04-10 10:13:35,139: INFO/MainProcess] mingle: all alone
+[2024-04-10 10:13:35,190: INFO/MainProcess] celery@a31332bea20c ready.
+[2024-04-10 10:14:21,220: INFO/MainProcess] Task modules.services.tasks.send_activate_email_message_task[5dcd1908-d6d9-4782-beda-be7f88110aa2] received
+[2024-04-10 10:16:31,922: ERROR/ForkPoolWorker-1] Task modules.services.tasks.send_activate_email_message_task[5dcd1908-d6d9-4782-beda-be7f88110aa2] raised unexpected: OSError(101, 'Network unreachable')
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/site-packages/celery/app/trace.py", line 477, in trace_task
+    R = retval = fun(*args, **kwargs)
+                 ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/celery/app/trace.py", line 760, in __protected_call__
+    return self.run(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/modules/services/tasks.py", line 13, in send_activate_email_message_task
+    return send_activate_email_message(user_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/modules/services/email.py", line 43, in send_activate_email_message
+    return user.email_user(subject, message)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/contrib/auth/models.py", line 402, in email_user
+    send_mail(subject, message, from_email, [self.email], **kwargs)
+  File "/usr/local/lib/python3.12/site-packages/django/core/mail/__init__.py", line 87, in send_mail
+    return mail.send()
+           ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/core/mail/message.py", line 298, in send
+    return self.get_connection(fail_silently).send_messages([self])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/core/mail/backends/smtp.py", line 127, in send_messages
+    new_conn_created = self.open()
+                       ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/site-packages/django/core/mail/backends/smtp.py", line 85, in open
+    self.connection = self.connection_class(
+                      ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/smtplib.py", line 255, in __init__
+    (code, msg) = self.connect(host, port)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/smtplib.py", line 341, in connect
+    self.sock = self._get_socket(host, port, self.timeout)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/smtplib.py", line 312, in _get_socket
+    return socket.create_connection((host, port), timeout,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/socket.py", line 852, in create_connection
+    raise exceptions[0]
+  File "/usr/local/lib/python3.12/socket.py", line 837, in create_connection
+    sock.connect(sa)
+OSError: [Errno 101] Network unreachable
+[2024-04-10 11:15:02,220: ERROR/MainProcess] Process 'ForkPoolWorker-1' pid:8 exited with 'signal 9 (SIGKILL)'
+[2024-04-10 11:17:13,318: ERROR/MainProcess] Timed out waiting for UP message from <ForkProcess(ForkPoolWorker-2, started daemon)>
+[2024-04-10 11:17:13,765: ERROR/MainProcess] Process 'ForkPoolWorker-2' pid:9 exited with 'signal 9 (SIGKILL)'
+[2024-04-10 11:19:53,072: WARNING/MainProcess] /usr/local/lib/python3.12/site-packages/celery/worker/consumer/consumer.py:507: CPendingDeprecationWarning: The broker_connection_retry configuration setting will no longer determine
+whether broker connection retries are made during startup in Celery 6.0 and above.
+If you wish to retain the existing behavior for retrying connections on startup,
+you should set broker_connection_retry_on_startup to True.
+  warnings.warn(
+
+[2024-04-10 11:19:58,119: ERROR/MainProcess] consumer: Cannot connect to redis://redis:6379/0: Error -3 connecting to redis:6379. Try again..
+Trying again in 2.00 seconds... (1/100)
+
+[2024-04-10 11:20:05,127: ERROR/MainProcess] consumer: Cannot connect to redis://redis:6379/0: Error -3 connecting to redis:6379. Try again..
+Trying again in 4.00 seconds... (2/100)
+
+[2024-04-10 11:20:14,135: ERROR/MainProcess] consumer: Cannot connect to redis://redis:6379/0: Error -3 connecting to redis:6379. Try again..
+Trying again in 6.00 seconds... (3/100)
+
+[2024-04-10 11:20:25,143: ERROR/MainProcess] consumer: Cannot connect to redis://redis:6379/0: Error -3 connecting to redis:6379. Try again..
+Trying again in 8.00 seconds... (4/100)
+
+[2024-04-10 11:20:38,150: ERROR/MainProcess] consumer: Cannot connect to redis://redis:6379/0: Error -3 connecting to redis:6379. Try again..
+Trying again in 10.00 seconds... (5/100)
+
+[2024-04-10 11:20:53,159: ERROR/MainProcess] consumer: Cannot connect to redis://redis:6379/0: Error -3 connecting to redis:6379. Try again..
+Trying again in 12.00 seconds... (6/100)
+
+[2024-04-10 11:21:10,173: ERROR/MainProcess] consumer: Cannot connect to redis://redis:6379/0: Error -3 connecting to redis:6379. Try again..
+Trying again in 14.00 seconds... (7/100)
+
+[2024-04-10 11:21:29,193: ERROR/MainProcess] consumer: Cannot connect to redis://redis:6379/0: Error -3 connecting to redis:6379. Try again..
+Trying again in 16.00 seconds... (8/100)
+
+[2024-04-10 11:21:50,202: ERROR/MainProcess] consumer: Cannot connect to redis://redis:6379/0: Error -3 connecting to redis:6379. Try again..
+Trying again in 18.00 seconds... (9/100)
+
+[2024-04-10 11:22:13,211: ERROR/MainProcess] consumer: Cannot connect to redis://redis:6379/0: Error -3 connecting to redis:6379. Try again..
+Trying again in 20.00 seconds... (10/100)
+
+[2024-04-10 11:22:38,221: ERROR/MainProcess] consumer: Cannot connect to redis://redis:6379/0: Error -3 connecting to redis:6379. Try again..
+Trying again in 22.00 seconds... (11/100)
+
+[2024-04-10 11:23:05,236: ERROR/MainProcess] consumer: Cannot connect to redis://redis:6379/0: Error -3 connecting to redis:6379. Try again..
+Trying again in 24.00 seconds... (12/100)
+
+[2024-04-10 11:23:34,246: ERROR/MainProcess] consumer: Cannot connect to redis://redis:6379/0: Error -3 connecting to redis:6379. Try again..
+Trying again in 26.00 seconds... (13/100)
+
+[2024-04-10 11:24:05,256: ERROR/MainProcess] consumer: Cannot connect to redis://redis:6379/0: Error -3 connecting to redis:6379. Try again..
+Trying again in 28.00 seconds... (14/100)
+
+[2024-04-10 11:24:38,283: ERROR/MainProcess] consumer: Cannot connect to redis://redis:6379/0: Error -3 connecting to redis:6379. Try again..
+Trying again in 30.00 seconds... (15/100)
+
+[2024-04-10 11:25:13,333: ERROR/MainProcess] consumer: Cannot connect to redis://redis:6379/0: Error -3 connecting to redis:6379. Try again..
+Trying again in 32.00 seconds... (16/100)
+
+[2024-04-10 11:25:50,364: ERROR/MainProcess] consumer: Cannot connect to redis://redis:6379/0: Error -3 connecting to redis:6379. Try again..
+Trying again in 32.00 seconds... (16/100)
+

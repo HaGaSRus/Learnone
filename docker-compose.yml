@@ -16,28 +16,25 @@ services:
     env_file:
       - docker/env/.env.prod
     volumes:
-      - ./:/huntjob
-      - static:/huntjob/static
-      - media:/huntjob/media
+      - ./:/app
+      - static:/app/static
+      - media:/app/media
     depends_on:
       - postgres
       - redis
-    command: sh -c "python manage.py collectstatic --no-input &&
-                    python manage.py makemigrations &&
-                    python manage.py migrate &&
-                    gunicorn --workers=4 --reload --max-requests=1000 backend.wsgi -b 0.0.0.0:8000""
-
+    command: sh -c "python manage.py collectstatic --no-input && python manage.py makemigrations && python manage.py migrate && gunicorn --workers=4 --reload --max-requests=1000 jobportal.wsgi -b 0.0.0.0:8000"
+  
   nginx:
     container_name: nginx
-    working_dir: /huntjob
+    working_dir: /app
     image: nginx:stable-alpine
     restart: always
     ports:
-      - "80:80"
-      - "443:443"
+      - '80:80'
+      - '443:443'
     volumes:
-      - static:/huntjob/static
-      - media:/huntjob/media
+      - static:/app/static
+      - media:/app/media
       - ./docker/nginx/prod/:/etc/nginx/conf.d:ro
       - ./docker/certbot/conf:/etc/letsencrypt:ro
       - ./docker/certbot/www:/var/www/certbot:ro
@@ -72,8 +69,8 @@ services:
     env_file:
       - docker/env/.env.prod
     volumes:
-      - ./:/huntjob
-      - media:/huntjob/media
+      - ./:/app
+      - media:/app/media
     command: celery -A jobportal worker --loglevel=info --logfile=./docker/logs.celery-worker.log
     depends_on:
       - redis
@@ -85,17 +82,18 @@ services:
       - docker/env/.env.prod
     depends_on:
       - redis
-    command: celery -A jobportal beat --loglevel=info --logfile=./docker/logs/celery-beat.log
+    command: celery -A jobportal beat --loglevel=info --logfile=/app/docker/logs/celery-beat.log
     volumes:
-        - media:/huntjob/media
-        -  ./:/huntjob
+      - media:/app/media
+      -  ./:/app
 
   certbot:
     image: certbot/certbot
     container_name: certbot
     volumes:
-      - ./docker/cert/conf:/etc/letsencrypt:rw
+      - ./docker/certbot/conf:/etc/letsencrypt:rw
       - ./docker/certbot/www:/var/www/certbot:rw
-    command: certonly --webroot --webroot-path=/var/www/certbot/ --email tro37295@gmail.com --no-eff-email -d example.com -d www.learnone.com
     depends_on:
       - nginx
+
+
