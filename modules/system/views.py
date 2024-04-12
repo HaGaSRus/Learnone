@@ -19,7 +19,6 @@ from .models import Profile, Feedback
 from .forms import (UserUpdateForm, ProfileUpdateForm, UserRegisterForm, UserLoginForm, UserPasswordChangeForm,
                     UserForgotPasswordForm, UserSetNewPasswordForm, FeedbackCreateForm)
 from ..services.mixins import UserIsNotAuthenticated
-from ..services.email import send_contact_email_message
 from ..services.utils import get_client_ip
 from ..services.tasks import send_activate_email_message_task, send_contact_email_message_task
 
@@ -58,18 +57,6 @@ class UserRegisterView(UserIsNotAuthenticated, CreateView):
         user.is_active = False
         user.save()
         send_activate_email_message_task.delay(user.id)
-        # Функционал для отправки письма и генерации токена
-        token = default_token_generator.make_token(user)
-        uid = urlsafe_base64_encode(force_bytes(user.pk))
-        activation_url = reverse_lazy('confirm_email', kwargs={'uidb64': uid, 'token': token})
-        current_site = Site.objects.get_current().domain
-        send_mail(
-            'Подтвердите свой электронный адрес',
-            f'Пожалуйста, перейдите по следующей ссылке, чтобы подтвердить свой адрес электронной почты: http://{current_site}{activation_url}',
-            'service.tro37295@gmail.com',
-            [user.email],
-            fail_silently=False,
-        )
         return redirect('email_confirmation_sent')
 
 

@@ -159,7 +159,7 @@ CELERY_TIMEZONE = 'Asia/Yekaterinburg'
 CELERY_BEAT_SCHEDULE = {
     'backup_database': {
         'task': 'modules.services.tasks.dbackup_task', # Путь к задаче указанной в tasks.py
-        'schedule': crontab(hour=16, minute=31),  # Резервная копия будет создаваться каждый день в полночь
+        'schedule': crontab(hour=14, minute=34),  # Резервная копия будет создаваться каждый день в полночь
     },
 }
 
@@ -191,6 +191,7 @@ MEDIA_URL = '/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = env('EMAIL_HOST')
 EMAIL_PORT = env('EMAIL_PORT')
 EMAIL_USE_TLS = int(env('EMAIL_USE_TLS', default=1))

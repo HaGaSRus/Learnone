@@ -1,5 +1,5 @@
-from celery import shared_task
 from django.core.management import call_command
+from celery import shared_task
 
 from .email import send_activate_email_message, send_contact_email_message
 
@@ -20,7 +20,6 @@ def send_contact_email_message_task(subject, email, content, ip, user_id):
     2. Отправка письма из формы обратной связи осуществляется через функцию: send_contact_email_message
     """
     return send_contact_email_message(subject, email, content, ip, user_id)
-
 
 @shared_task()
 def dbackup_task():
