@@ -1604,3 +1604,11 @@ you should set broker_connection_retry_on_startup to True.
 [2024-04-12 15:33:21,361: INFO/ForkPoolWorker-1] Task modules.services.tasks.send_activate_email_message_task[4c37a7f8-986a-4c1f-906d-e9b9d11373bc] succeeded in 0.7633599029995821s: None
 [2024-04-12 16:37:00,994: INFO/MainProcess] Task modules.services.tasks.send_activate_email_message_task[fe57bfd2-a662-43fc-8dc3-dd295a553000] received
 [2024-04-12 16:37:01,708: INFO/ForkPoolWorker-1] Task modules.services.tasks.send_activate_email_message_task[fe57bfd2-a662-43fc-8dc3-dd295a553000] succeeded in 0.7105221320016426s: None
+[2024-04-13 14:34:00,042: INFO/MainProcess] Task modules.services.tasks.dbackup_task[e685e0d2-3d65-4d54-9b97-6d799a11d252] received
+[2024-04-13 14:34:00,079: WARNING/ForkPoolWorker-1] Waiting for database dump...
+[2024-04-13 14:34:00,322: WARNING/ForkPoolWorker-1] Database successfully backed up
+[2024-04-13 14:34:00,323: INFO/ForkPoolWorker-1] Task modules.services.tasks.dbackup_task[e685e0d2-3d65-4d54-9b97-6d799a11d252] succeeded in 0.27417357999365777s: None
+[2024-04-14 14:34:00,010: INFO/MainProcess] Task modules.services.tasks.dbackup_task[5f05cf74-b332-490f-ab65-79624601d001] received
+[2024-04-14 14:34:00,023: WARNING/ForkPoolWorker-1] Waiting for database dump...
+[2024-04-14 14:34:00,233: WARNING/ForkPoolWorker-1] Database successfully backed up
+[2024-04-14 14:34:00,235: INFO/ForkPoolWorker-1] Task modules.services.tasks.dbackup_task[5f05cf74-b332-490f-ab65-79624601d001] succeeded in 0.2185995610198006s: None
